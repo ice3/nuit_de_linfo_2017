@@ -26,7 +26,6 @@
 	<style type="text/css">
 	#content {
 		width:300px;
-		margin:30px auto;
 	}
 
 	#thermometer {
@@ -148,8 +147,6 @@
 			font-size: 30px;
 			line-height: 34px;
 			margin: 0 0 24px;
-			text-align: justify;
-			text-justify: inter-word;
 		}
 
 		.easter-egg {
@@ -161,18 +158,31 @@
 			background-image: url("hacked.gif");
 		}
 
+		@media (max-width: 1000px){
+			.thermometer_content{
+				margin-left: 28em;
+			}
+		}
+
+		@media (min-width: 1000px){
+			.thermometer_content{
+				margin-left: 35em;
+			}
+		}
+
 	</style>
 </head>
 <body class="centered fullpage">
 
 	<div>
 		<div id="infos">
-			<p>Pointe les gens de ton groupe. Le Sam sera désigné.</p>
+			<p>Laissez un algorithme de big data mining décider pour vous au début de votre soirée.</p>
+			<p style="margin-bottom: 100px;">Pointez la machine trouver le plus Sam de vos amis.</p>
 			<p id="trouve" style="visibility: hidden">C'est toi Sam!!</p>
 		</div>
 
 
-		<div id="content" style="margin-left: 20em;">
+		<div id="content" class="thermometer_content">
 			<div id="thermometer">
 				<div class="track">
 					<div class="goal">

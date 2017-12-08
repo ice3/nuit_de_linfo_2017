@@ -64,9 +64,34 @@
 		font-size: 30px;
 		line-height: 34px;
 		margin: 0 0 24px;
-		text-align: justify;
-		text-justify: inter-word;
 	}
+
+blockquote {
+    /* une paire de guillemets */
+    quotes: "«\00A0" "\00A0»";
+    /* position: relative; */
+    /* padding: .5em 0 .5em 2.6em; */
+    /* margin: 1em 0; */
+    /* font: italic 3.05em/3.7 Georgia,serif; */
+    font-size: 2.0em;
+    /* text-indent: 1em; */
+    border: 0 dashed #aaa;
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+    border-width: 1px 0;
+    quotes: "«" "»";
+    margin-bottom: 5em;
+    margin-top: 1em;
+}
+
+blockquote::before {
+    content: open-quote;
+}
+blockquote::after {
+    content: close-quote;
+}
 
 	.btn-class{
 		display: inline-block;
@@ -129,8 +154,20 @@
 	</head>
 	<body class="centered fullpage">
 		<div>
-			<input class="btn-class marges" onClick="window.location.href='choice_begin.html'" type="submit" Value="Début de soirée">
-			<input class="btn-class marges" onClick="window.location.href='choice_end.html'" type="submit" Value="Fin de soirée">
+
+			<img src="chipsalapacamous.png" style="width: auto;height: 400px;">
+			<blockquote>
+				<span style="text-transform: uppercase;">L'heure est grave.</span><br>
+				<span>Nous devons désigner un Sam pour nous raccompagner à la fin de la soirée.</span>
+			</blockquote>
+
+			<p>
+				La soirée a-t-elle déjà commencé ?
+			</p>
+			<div>
+				<input class="btn-class marges" onClick="window.location.href='choice_begin.html'" type="submit" Value="Non">
+				<input class="btn-class marges" onClick="window.location.href='choice_end.html'" type="submit" Value="Oui">
+			</div>
 		</div>
 
 		<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous">	</script>
