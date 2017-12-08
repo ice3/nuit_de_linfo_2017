@@ -2,33 +2,50 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8"
-     name='viewport'
-     content='width=device-width, initial-scale=0.4, maximum-scale=0.4, user-scalable=0'/>
+	name='viewport'
+	content='width=device-width, initial-scale=0.4, maximum-scale=0.4, user-scalable=0'/>
 	<title>Test de réactivité</title>
+	<link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+	<link rel="manifest" href="manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
 
 	<style>
 
-		.konami {
-			-moz-transform: scale(-1, 1);
-			-webkit-transform: scale(-1, 1);
-			-o-transform: scale(-1, 1);
-			-ms-transform: scale(-1, 1);
-			transform: scale(-1, 1);
-			background-image: url("hacked.gif");
-		}
+	.konami {
+		-moz-transform: scale(-1, 1);
+		-webkit-transform: scale(-1, 1);
+		-o-transform: scale(-1, 1);
+		-ms-transform: scale(-1, 1);
+		transform: scale(-1, 1);
+		background-image: url("hacked.gif");
+	}
 
-		.easter-egg {
-			background-image: url("https://media.giphy.com/media/26FLe5dPnpbDUBsMU/giphy.gif");
-			background-repeat: round;
-		}
+	.easter-egg {
+		background-image: url("https://media.giphy.com/media/26FLe5dPnpbDUBsMU/giphy.gif");
+		background-repeat: round;
+	}
 
 
-		.reaction {
-			border: solid black 10px;
-			border-radius: 100px;
-			width: auto;
-			height: 20em;
-		}
+	.reaction {
+		border: solid black 10px;
+		border-radius: 100px;
+		width: auto;
+		height: 20em;
+	}
 
 	body {
 		background-color: white;
@@ -37,34 +54,34 @@
 	}
 
 
- 		h1 {
- 			color: #111;
- 			font-family: 'Helvetica Neue', sans-serif;
- 			font-size: 75px;
- 			font-weight: bold;
- 			letter-spacing: -1px;
- 			line-height: 1; text-align: center;
- 		}
+	h1 {
+		color: #111;
+		font-family: 'Helvetica Neue', sans-serif;
+		font-size: 75px;
+		font-weight: bold;
+		letter-spacing: -1px;
+		line-height: 1; text-align: center;
+	}
 
-		h2 {
-			color: #111;
-			font-family: 'Open Sans', sans-serif;
-			font-size: 30px;
-			font-weight: 300;
-			line-height: 32px;
-			margin: 0 0 72px;
-			text-align: center;
-		}
+	h2 {
+		color: #111;
+		font-family: 'Open Sans', sans-serif;
+		font-size: 30px;
+		font-weight: 300;
+		line-height: 32px;
+		margin: 0 0 72px;
+		text-align: center;
+	}
 
-		p {
-			color: #685206;
-			font-family: 'Helvetica Neue', sans-serif;
-			font-size: 30px;
-			line-height: 34px;
-			margin: 0 0 24px;
-			text-align: justify;
-			text-justify: inter-word;
-		}
+	p {
+		color: #685206;
+		font-family: 'Helvetica Neue', sans-serif;
+		font-size: 30px;
+		line-height: 34px;
+		margin: 0 0 24px;
+		text-align: justify;
+		text-justify: inter-word;
+	}
 
 	.marges {
 		margin-right: 20px;
@@ -76,45 +93,45 @@
  			/*
 				/!\ use flexbox for vertical centering
 				*/
-		align-items: center;
-		display: flex;
-		justify-content: center;
-	}
+				align-items: center;
+				display: flex;
+				justify-content: center;
+			}
 
-	.fullpage {
+			.fullpage {
 		/*
 		 really fullpage, because it's not centered otherwise...
 		 hidden hides the scroll
-		*/
-		height: 90vh;
-		width:  99vw;
-		overflow: hidden;
-	}
+		 */
+		 height: 90vh;
+		 width:  99vw;
+		 overflow: hidden;
+		}
 
-	.spacer {
-		margin-top: 60px;
-	}
+		.spacer {
+			margin-top: 60px;
+		}
 
 
-	</style>
-</head>
-<body class="centered fullpage">
-	<div>
-		<h1>Test de réactivité</h1>
-		<div id="tuto">
-		<p>Touchez juste après que le rectangle ait changé de couleur.</p>
-		<p>Vous avez 3 essais.</p>
+		</style>
+	</head>
+	<body class="centered fullpage">
+		<div>
+			<h1>Test de réactivité</h1>
+			<div id="tuto">
+				<p>Touchez juste après que le rectangle ait changé de couleur.</p>
+				<p>Vous avez 3 essais.</p>
 
+			</div>
+
+			<div class="reaction" id="zone_reaction" onclick="zone_clicked()"></div>
+			<p id="resultats" style="display: none;"></p>
+			<p id="winner" style="display: none;"></p>
 		</div>
-
-		<div class="reaction" id="zone_reaction" onclick="zone_clicked()"></div>
-		<p id="resultats" style="display: none;"></p>
-		<p id="winner" style="display: none;"></p>
-	</div>
-	<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous">
-	</script>
-	<script src="konami.js"></script>
-	<script>
+		<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous">
+		</script>
+		<script src="konami.js"></script>
+		<script>
 		var zone = document.getElementById("zone_reaction");
 		var result_zone = document.getElementById("resultats");
 		var winner_zone = document.getElementById("winner");
@@ -128,7 +145,7 @@
 		var nb_users = 0;
 
 		var easter_egg = new Konami(function() {
-		    document.body.classList.toggle("konami")
+			document.body.classList.toggle("konami")
 		});
 
 
@@ -180,7 +197,7 @@
 			}
 			name = prompt("Entrez votre nom (appuyer sur annuler pour annuler):");
 			if (name == "null") {
-				results();
+				results("Entrez un nom au moins...");
 			}
 			console.log("after name");
 			index_for_user = 0;
@@ -191,39 +208,42 @@
 		function results(raison){
 			document.getElementById("tuto").style.display = "none";
 			zone.style.display = "none";
-			result_zone.style.display = 'block';
 			winner_zone.style.display = 'block';
 			nom_sobre = undefined;
 			min_reaction = 10000000;
 			texte = "<ul>"
 
 			if(raison){
+				result_zone.style.display = 'none';
 				winner_zone.innerHTML = raison + " Vous êtes tous bourrés, appelez un " + '<a href="'+"https://www.uber.com/fr/"+'">'+ " Uber "+"</a>" ;
 				return;
 			}
-
-			for (var nom in moyennes) {
-			    if (moyennes.hasOwnProperty(nom)) {
-			    	if (moyennes[nom] < min_reaction){
-			    		min_reaction = moyennes[nom];
-			    		nom_sobre = nom;
-			    	}
-			        console.log(nom, moyennes[nom]);
-			    	texte += "<li>" + (nom + " : " + moyennes[nom].toFixed(3)) + "</li>";
-			    }
-			}
-			texte += "</ul>";
-			t = "Voilà les scores (en ms) : " + texte;
-			result_zone.innerHTML = t;
-
-			if (min_reaction > 800){
-				winner_zone.innerHTML = "Et Sam est... personne. Vous êtes tous bourrés, appelez un " + '<a href="'+"https://www.uber.com/fr/"+'">'+ " Uber "+"</a>" ;
-
-			}
 			else {
-				winner_zone.innerText = "Et Sam est... " + nom_sobre;
+				result_zone.style.display = 'block';
+				for (var nom in moyennes) {
+					if (moyennes.hasOwnProperty(nom)) {
+						if (moyennes[nom] < min_reaction){
+							min_reaction = moyennes[nom];
+							nom_sobre = nom;
+						}
+						console.log(nom, moyennes[nom]);
+						texte += "<li>" + (nom + " : " + moyennes[nom].toFixed(3)) + "</li>";
+					}
+				}
+				texte += "</ul>";
+				t = "Voilà les scores (en ms) : " + texte;
+				result_zone.innerHTML = t;
 
+				if (min_reaction > 800){
+					winner_zone.innerHTML = "Et Sam est... personne. Vous êtes tous bourrés, appelez un " + '<a href="'+"https://www.uber.com/fr/"+'">'+ " Uber "+"</a>" ;
+
+				}
+				else {
+					winner_zone.innerText = "Et Sam est... " + nom_sobre;
+
+				}
 			}
+
 		}
 
 		function activate_easter_egg(){
@@ -234,7 +254,7 @@
 
 		setTimeout(next_user, 1000);
 
-	</script>
+		</script>
 
-</body>
-</html>
+	</body>
+	</html>
