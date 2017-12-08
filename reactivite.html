@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"
+     name='viewport'
+     content='width=device-width, initial-scale=0.4, maximum-scale=0.4, user-scalable=0'/>
+	<title>Test de réactivité</title>
+
+	<style>
+
+		.konami {
+			-moz-transform: scale(-1, 1);
+			-webkit-transform: scale(-1, 1);
+			-o-transform: scale(-1, 1);
+			-ms-transform: scale(-1, 1);
+			transform: scale(-1, 1);
+			background-image: url("hacked.gif");
+		}
+
+		.easter-egg {
+			background-image: url("https://media.giphy.com/media/26FLe5dPnpbDUBsMU/giphy.gif");
+			background-repeat: round;
+		}
+
+
+		.reaction {
+			border: solid black 10px;
+			border-radius: 100px;
+			width: auto;
+			height: 20em;
+		}
+
+	body {
+		background-color: white;
+		text-align: center;
+		color: rgb(15, 15, 15);
+	}
+
+
+ 		h1 {
+ 			color: #111;
+ 			font-family: 'Helvetica Neue', sans-serif;
+ 			font-size: 75px;
+ 			font-weight: bold;
+ 			letter-spacing: -1px;
+ 			line-height: 1; text-align: center;
+ 		}
+
+		h2 {
+			color: #111;
+			font-family: 'Open Sans', sans-serif;
+			font-size: 30px;
+			font-weight: 300;
+			line-height: 32px;
+			margin: 0 0 72px;
+			text-align: center;
+		}
+
+		p {
+			color: #685206;
+			font-family: 'Helvetica Neue', sans-serif;
+			font-size: 30px;
+			line-height: 34px;
+			margin: 0 0 24px;
+			text-align: justify;
+			text-justify: inter-word;
+		}
+
+	.marges {
+		margin-right: 20px;
+		margin-left: 20px;
+	}
+
+
+	.centered {
+ 			/*
+				/!\ use flexbox for vertical centering
+				*/
+		align-items: center;
+		display: flex;
+		justify-content: center;
+	}
+
+	.fullpage {
+		/*
+		 really fullpage, because it's not centered otherwise...
+		 hidden hides the scroll
+		*/
+		height: 90vh;
+		width:  99vw;
+		overflow: hidden;
+	}
+
+	.spacer {
+		margin-top: 60px;
+	}
+
+
+	</style>
+</head>
+<body class="centered fullpage">
+	<div>
+		<h1>Test de réactivité</h1>
+		<div id="tuto">
+		<p>Touchez juste après que le rectangle ait changé de couleur.</p>
+		<p>Vous avez 3 essais.</p>
+
+		</div>
+
+		<div class="reaction" id="zone_reaction" onclick="zone_clicked()"></div>
+		<p id="resultats" style="display: none;"></p>
+		<p id="winner" style="display: none;"></p>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous">
+	</script>
+	<script src="/konami.js"></script>
+	<script>
+		var zone = document.getElementById("zone_reaction");
+		var result_zone = document.getElementById("resultats");
+		var winner_zone = document.getElementById("winner");
+		var start = undefined;
+		var user_reaction_times = 0;
+		var index_for_user = 0;
+		var moyenne = 0;
+		var moyennes = {};
+		var name;
+		var started = false;
+		var nb_users = 0;
+
+		var easter_egg = new Konami(function() {
+		    document.body.classList.toggle("konami")
+		});
+
+
+		function set_black(){
+			started = true;
+			zone.style.background = "black";
+			start = new Date();
+		}
+
+		function set_white(){
+			zone.style.background = "white";
+		}
+
+		function zone_clicked(){
+			if (started == false){
+				return;
+			}
+			diff = (new Date()) - start;
+			console.log("diff : ", diff);
+			if((1337 - 50) <= diff && diff <= (1337 + 50) ){
+				console.log("easter egg");
+				activate_easter_egg();
+			}
+
+			user_reaction_times += diff;
+			console.log(user_reaction_times);
+			index_for_user++;
+			set_white();
+			started = false;
+			next_round()
+		}
+
+		function next_round(){
+			if (index_for_user == 3){
+				moyenne = user_reaction_times / 3;
+				console.log(moyenne);
+				moyennes[name] = moyenne;
+				setTimeout(next_user, 500);
+			}
+			else {
+				setTimeout(set_black, (1000 + Math.random()*1500));
+			}
+		}
+
+		function next_user(){
+			nb_users++;
+			if (nb_users == 6){
+				results("On ne peut pas être plus de 5 dans une voiture voyons...")
+			}
+			name = prompt("Entrez votre nom (appuyer sur annuler pour annuler):");
+			if (name == "null") {
+				results();
+			}
+			console.log("after name");
+			index_for_user = 0;
+			user_reaction_times = 0;
+			next_round();
+		}
+
+		function results(raison){
+			document.getElementById("tuto").style.display = "none";
+			zone.style.display = "none";
+			result_zone.style.display = 'block';
+			winner_zone.style.display = 'block';
+			nom_sobre = undefined;
+			min_reaction = 10000000;
+			texte = "<ul>"
+
+			if(raison){
+				winner_zone.innerHTML = raison + " Vous êtes tous bourrés, appelez un " + '<a href="'+"https://www.uber.com/fr/"+'">'+ " Uber "+"</a>" ;
+				return;
+			}
+
+			for (var nom in moyennes) {
+			    if (moyennes.hasOwnProperty(nom)) {
+			    	if (moyennes[nom] < min_reaction){
+			    		min_reaction = moyennes[nom];
+			    		nom_sobre = nom;
+			    	}
+			        console.log(nom, moyennes[nom]);
+			    	texte += "<li>" + (nom + " : " + moyennes[nom].toFixed(3)) + "</li>";
+			    }
+			}
+			texte += "</ul>";
+			t = "Voilà les scores (en ms) : " + texte;
+			result_zone.innerHTML = t;
+
+			if (min_reaction > 800){
+				winner_zone.innerHTML = "Et Sam est... personne. Vous êtes tous bourrés, appelez un " + '<a href="'+"https://www.uber.com/fr/"+'">'+ " Uber "+"</a>" ;
+
+			}
+			else {
+				winner_zone.innerText = "Et Sam est... " + nom_sobre;
+
+			}
+		}
+
+		function activate_easter_egg(){
+			console.log("GG you found the easter egg");
+			document.body.classList.add("easter-egg");
+
+		}
+
+		setTimeout(next_user, 1000);
+
+	</script>
+
+</body>
+</html>

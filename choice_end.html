@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Fin de soirée</title>
+
+	<style>
+	body {
+		background-color: white;
+		text-align: center;
+		color: rgb(15, 15, 15);
+	}
+
+	h1 {
+		color: #111;
+		font-family: 'Helvetica Neue', sans-serif;
+		font-size: 75px;
+		font-weight: bold;
+		letter-spacing: -1px;
+		line-height: 1; text-align: center;
+	}
+
+	h2 {
+		color: #111;
+		font-family: 'Open Sans', sans-serif;
+		font-size: 30px;
+		font-weight: 300;
+		line-height: 32px;
+		margin: 0 0 72px;
+		text-align: center;
+	}
+
+	p {
+		color: #685206;
+		font-family: 'Helvetica Neue', sans-serif;
+		font-size: 30px;
+		line-height: 34px;
+		margin: 0 0 24px;
+		text-align: justify;
+		text-justify: inter-word;
+	}
+
+	.btn-class{
+		display: inline-block;
+		border:1px solid #C9AE34;
+		color: #705D07;
+		border-radius: 3px 3px 3px 3px;
+		-webkit-border-radius: 3px 3px 3px 3px;
+		-moz-border-radius: 3px 3px 3px 3px;
+		font-family: Verdana;
+		width: auto;
+		height: auto;
+		font-size: 29px;
+		padding: 12px 42px;
+		box-shadow: inset 0 1px 0 0 #FFF6CE,inset 0 -1px 0 0 #E3C852,inset 0 0 0 1px #FCE88D,0 2px 4px 0 #D4D4D4;
+		-moz-box-shadow: inset 0 1px 0 0 #FFF6CE,inset 0 -1px 0 0 #E3C852,inset 0 0 0 1px #FCE88D,0 2px 4px 0 #D4D4D4;
+		-webkit-box-shadow: inset 0 1px 0 0 #FFF6CE,inset 0 -1px 0 0 #E3C852,inset 0 0 0 1px #FCE88D,0 2px 4px 0 #D4D4D4;
+		text-shadow: 0 1px 0 #FFFFFF;
+		background-image: linear-gradient(to top, #FCE374, #FCDF5B);
+		background-color: #FCE374;
+	}
+	.btn-class:hover, .btn-class:active{
+		border:1px solid #967D09;
+		color: #705D07;
+		box-shadow: inset 0 1px 0 0 #FFF6CE,inset 0 -1px 0 0 #E3C852,inset 0 0 0 1px #FCE88D;
+		-moz-box-shadow: inset 0 1px 0 0 #FFF6CE,inset 0 -1px 0 0 #E3C852,inset 0 0 0 1px #FCE88D;
+		-webkit-box-shadow: inset 0 1px 0 0 #FFF6CE,inset 0 -1px 0 0 #E3C852,inset 0 0 0 1px #FCE88D;
+		background-color: #FCDF5B;
+	}
+
+
+	.marges {
+		margin-right: 20px;
+		margin-left: 20px;
+	}
+
+
+	.centered {
+ 			/*
+				/!\ use flexbox for vertical centering
+				*/
+				align-items: center;
+				display: flex;
+				justify-content: center;
+			}
+
+			.fullpage {
+		/*
+		 really fullpage, because it's not centered otherwise...
+		 hidden hides the scroll
+		 */
+		 height: 90vh;
+		 width:  99vw;
+		 overflow: hidden;
+		}
+
+		.spacer {
+			margin-top: 60px;
+		}
+
+		.easter-egg {
+			-moz-transform: scale(-1, 1);
+			-webkit-transform: scale(-1, 1);
+			-o-transform: scale(-1, 1);
+			-ms-transform: scale(-1, 1);
+			transform: scale(-1, 1);
+			background-image: url("hacked.gif");
+		}
+		</style>
+
+
+
+	</head>
+	<body class="centered fullpage">
+		<div>
+			<input class="btn-class marges" onClick="window.location.href='/reactivite.html'" type="submit" Value="Test de réactivité">
+		</div>
+
+
+		<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous">	</script>
+
+		<script src="/konami.js"></script>
+		<script>
+		var easter_egg = new Konami(function() {
+			document.body.classList.toggle("easter-egg")
+		});
+		</script>
+	</body>
+	</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Sam O Meter</title>
+
+	<!-- source du thermometre https://codepen.io/jvdl/pen/otHrL?page=1& -->
+
+	<style type="text/css">
+	#content {
+		width:300px;
+		margin:30px auto;
+	}
+
+	#thermometer {
+		width:70px;
+		height:300px;
+		position: relative;
+		background: #ddd;
+		border:1px solid #aaa;
+		-webkit-border-radius: 12px;
+		-moz-border-radius: 12px;
+		-ms-border-radius: 12px;
+		-o-border-radius: 12px;
+		border-radius: 12px;
+
+		-webkit-box-shadow: 1px 1px 4px #999, 5px 0 20px #999;
+		-moz-box-shadow: 1px 1px 4px #999, 5px 0 20px #999;
+		-ms-box-shadow: 1px 1px 4px #999, 5px 0 20px #999;
+		-o-box-shadow: 1px 1px 4px #999, 5px 0 20px #999;
+		box-shadow: 1px 1px 4px #999, 5px 0 20px #999;
+	}
+
+	#thermometer .track {
+		height:280px;
+		top:10px;
+		width:20px;
+		border: 1px solid #aaa;
+		position: relative;
+		margin:0 auto;
+		background: rgb(255,255,255);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb(0,0,0)), color-stop(1%,rgb(255,255,255)));
+		background: -webkit-linear-gradient(top, rgb(0,0,0) 0%,rgb(255,255,255) 10%);
+		background:      -o-linear-gradient(top, rgb(0,0,0) 0%,rgb(255,255,255) 10%);
+		background:     -ms-linear-gradient(top, rgb(0,0,0) 0%,rgb(255,255,255) 10%);
+		background:    -moz-linear-gradient(top, rgb(0,0,0) 0%,rgb(255,255,255) 10%);
+		background:   linear-gradient(to bottom, rgb(0,0,0) 0%,rgb(255,255,255) 10%);
+		background-position: 0 -1px;
+		background-size: 100% 5%;
+	}
+
+	#thermometer .progress {
+		height:0%;
+		width:100%;
+		background: rgb(20,100,20);
+		background: rgba(20,100,20,0.6);
+		position: absolute;
+		bottom:0;
+		left:0;
+	}
+
+	#thermometer .goal {
+		position:absolute;
+		top:0;
+	}
+
+	#thermometer .amount {
+		display: inline-block;
+		padding:0 5px 0 60px;
+		border-top:1px solid black;
+		font-family: Trebuchet MS;
+		font-weight: bold;
+		color:#333;
+	}
+
+	#thermometer .progress .amount {
+		padding:0 60px 0 5px;
+		position: absolute;
+		border-top:1px solid #060;
+		color:#060;
+		right:0;
+	}
+
+	.centered {
+ 			/*
+				/!\ use flexbox for vertical centering
+				*/
+				align-items: center;
+				display: flex;
+				justify-content: center;
+			}
+
+			.fullpage {
+		/*
+		 really fullpage, because it's not centered otherwise...
+		 hidden hides the scroll
+		 */
+		 height: 90vh;
+		 width:  99vw;
+		 overflow: hidden;
+		}
+
+		body {
+			background-color: white;
+			text-align: center;
+			color: rgb(15, 15, 15);
+		}
+
+		h1 {
+			color: #111;
+			font-family: 'Helvetica Neue', sans-serif;
+			font-size: 75px;
+			font-weight: bold;
+			letter-spacing: -1px;
+			line-height: 1; text-align: center;
+		}
+
+		h2 {
+			color: #111;
+			font-family: 'Open Sans', sans-serif;
+			font-size: 30px;
+			font-weight: 300;
+			line-height: 32px;
+			margin: 0 0 72px;
+			text-align: center;
+		}
+
+		p {
+			color: #685206;
+			font-family: 'Helvetica Neue', sans-serif;
+			font-size: 30px;
+			line-height: 34px;
+			margin: 0 0 24px;
+			text-align: justify;
+			text-justify: inter-word;
+		}
+
+		.easter-egg {
+			-moz-transform: scale(-1, 1);
+			-webkit-transform: scale(-1, 1);
+			-o-transform: scale(-1, 1);
+			-ms-transform: scale(-1, 1);
+			transform: scale(-1, 1);
+			background-image: url("hacked.gif");
+		}
+
+	</style>
+</head>
+<body class="centered fullpage">
+
+	<div>
+		<div id="infos">
+			<p>Pointe les gens de ton groupe. Le Sam sera désigné.</p>
+			<p id="trouve" style="visibility: hidden">C'est toi Sam!!</p>
+		</div>
+
+
+		<div id="content" style="margin-left: 20em;">
+			<div id="thermometer">
+				<div class="track">
+					<div class="goal">
+						<div class="amount"> SAM! </div>
+					</div>
+					<div class="progress">
+						<div class="amount" id="sam_ou_pas">Pas SAM </div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous">
+	</script>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous">	</script>
+
+	<script src="/konami.js"></script>
+	<script>
+		var easter_egg = new Konami(function() {
+			document.body.classList.toggle("easter-egg")
+		});
+	</script>
+
+	<script type="text/javascript">
+
+
+	//originally from http://stackoverflow.com/questions/149055/how-can-i-format-numbers-as-money-in-javascript
+/**
+ * Thermometer Progress meter.
+ * This function will update the progress element in the "thermometer"
+ * to the updated percentage.
+ * If no parameters are passed in it will read them from the DOM
+ *
+ * @param {Number} goalAmount The Goal amount, this represents the 100% mark
+ * @param {Number} progressAmount The progress amount is the current amount
+ * @param {Boolean} animate Whether to animate the height or not
+ *
+ */
+ function thermometer(goalAmount, progressAmount, animate) {
+ 	"use strict";
+
+ 	var $thermo = $("#thermometer"),
+ 	$progress = $(".progress", $thermo),
+ 	$goal = $(".goal", $thermo),
+ 	percentageAmount;
+
+ 	goalAmount = goalAmount || parseFloat( $goal.text() ),
+ 	progressAmount = progressAmount || parseFloat( $progress.text() ),
+    percentageAmount =  Math.min( Math.round(progressAmount / goalAmount * 1000) / 10, 100); //make sure we have 1 decimal point
+
+    //let's format the numbers and put them back in the DOM
+    // $goal.find(".amount").text( "$" + formatCurrency( goalAmount ) );
+    // $progress.find(".amount").text( "$" + formatCurrency( progressAmount ) );
+
+
+    //let's set the progress indicator
+    $progress.find(".amount").hide();
+    if (animate !== false) {
+    	$progress.animate({
+    		"height": percentageAmount + "%"
+    	}, 1200, function(){
+    		$(this).find(".amount").fadeIn(50);
+    	});
+    }
+    else {
+    	$progress.css({
+    		"height": percentageAmount + "%"
+    	});
+    	$progress.find(".amount").fadeIn(50);
+    }
+}
+
+var duration = (3 + Math.floor(Math.random()*3)) * 1000;
+var start = new Date();
+var amount = Math.random()*20000;
+var max_amount = 1000000;
+
+$(document).ready(function(){
+    //call without the parameters to have it read from the DOM
+
+    var interval = setInterval(
+    	function(){
+    		if((new Date()) - start > duration){
+    			// fin
+    			clearInterval(interval);
+    			document.getElementById("trouve").style.visibility = "visible";
+    			document.getElementById("sam_ou_pas").textContent = "Totalement Sam !"
+    			thermometer(1000000, 1000000, true);
+    		}
+    		amount += (Math.random()*90000 - 2000);
+    		if (amount < 0 || amount > max_amount){
+    			amount = Math.random()*max_amount
+    		}
+    		console.log(amount);
+    		thermometer(1000000, amount, false);
+    	},
+    	100
+    	);
+
+});
+</script>
+
+
+
+</body>
+</html>
